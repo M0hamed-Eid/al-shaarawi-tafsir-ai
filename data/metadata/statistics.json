@@ -1,0 +1,362 @@
+{
+  "مقدمة": {
+    "surah_order": 0,
+    "episode_count": 3
+  },
+  "الفاتحة": {
+    "surah_order": 1,
+    "episode_count": 6
+  },
+  "البقرة": {
+    "surah_order": 2,
+    "episode_count": 111
+  },
+  "آل عمران": {
+    "surah_order": 3,
+    "episode_count": 69
+  },
+  "النساء": {
+    "surah_order": 4,
+    "episode_count": 64
+  },
+  "المائدة": {
+    "surah_order": 5,
+    "episode_count": 55
+  },
+  "الأنعام": {
+    "surah_order": 6,
+    "episode_count": 49
+  },
+  "الأعراف": {
+    "surah_order": 7,
+    "episode_count": 46
+  },
+  "الأنفال": {
+    "surah_order": 8,
+    "episode_count": 14
+  },
+  "التوبة": {
+    "surah_order": 9,
+    "episode_count": 49
+  },
+  "يونس": {
+    "surah_order": 10,
+    "episode_count": 39
+  },
+  "هود": {
+    "surah_order": 11,
+    "episode_count": 36
+  },
+  "يوسف": {
+    "surah_order": 12,
+    "episode_count": 14
+  },
+  "الرعد": {
+    "surah_order": 13,
+    "episode_count": 13
+  },
+  "الحجر": {
+    "surah_order": 15,
+    "episode_count": 15
+  },
+  "النحل": {
+    "surah_order": 16,
+    "episode_count": 43
+  },
+  "الحجرات الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 5
+  },
+  "الذاريات الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 6
+  },
+  "ق الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 6
+  },
+  "ابراهيم": {
+    "surah_order": 9999,
+    "episode_count": 16
+  },
+  "الأحزاب الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 22
+  },
+  "الأحقاف الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 9
+  },
+  "الأنبياء الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 14
+  },
+  "الإسراء الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 43
+  },
+  "الاخلاص الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "الاعلى الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "الانشقاق الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "الانفطار الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "البروج الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "التكاثرالحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "التكوير الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "الجاثية الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 8
+  },
+  "الحج الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 22
+  },
+  "الحديد الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 7
+  },
+  "الحشرالحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "الدخان الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 5
+  },
+  "الرحمن الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "الروم الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 19
+  },
+  "الزخرف الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 14
+  },
+  "الزمر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 18
+  },
+  "السجدة الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 9
+  },
+  "الشعراء الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 15
+  },
+  "الشورى الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 17
+  },
+  "الصافات الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 12
+  },
+  "الطارق الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "الطور الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "العاديات الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "العصر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "العلق الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "العنكبوت الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 16
+  },
+  "الغاشية الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "الفتح الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 5
+  },
+  "الفجر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "الفرقان الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 14
+  },
+  "الفلق الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "الفيل الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "القارعة الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "القدر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "القصص الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 16
+  },
+  "القمرالحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "الكافرون الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "الكهف الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 18
+  },
+  "الكوثرالحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "المؤمنون الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 14
+  },
+  "الماعون الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "المجادلة الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "المسد الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "المطففين الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "النازعات الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "الناس الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "النبأ الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "النجم الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 8
+  },
+  "النصر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 1
+  },
+  "النمل الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 14
+  },
+  "النور الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 11
+  },
+  "الهمزة الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 2
+  },
+  "الواقعة الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 5
+  },
+  "سبأ الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 11
+  },
+  "ص الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 12
+  },
+  "طه الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 17
+  },
+  "عبس الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 4
+  },
+  "غافر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 11
+  },
+  "فاطر الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 11
+  },
+  "فصلت الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 11
+  },
+  "قريش الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 3
+  },
+  "لقمان الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 22
+  },
+  "محمد الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 6
+  },
+  "مريم الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 12
+  },
+  "يس الحلقة": {
+    "surah_order": 9999,
+    "episode_count": 12
+  },
+  "الروم الحلقات": {
+    "surah_order": 9999,
+    "episode_count": 1
+  }
+}
