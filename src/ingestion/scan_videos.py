@@ -6,7 +6,11 @@ Scans the raw_videos directory and extracts structured data from each filename.
 Each filename follows one of these Arabic patterns:
   - تفسير سورة الفاتحة رقم 1
   - سورة يونس حلقة رقم 38
-  - مقدمة رقم 3
+  - سورة الكهف الحلقة رقم 1            # الحلقة (with ال)
+  - سورة الحجرات الحلقة رقم 4            # الحلقة (with ال)
+  - سورة التكاثرالحلقة رقم 1           # no space before الحلقة
+  - سورة الروم الحلقات رقم 20 +21      # الحلقات plural
+  - مقدمة رقم 3                          # no space before رقم
 
 Returns a list of dicts with: filename, surah, episode, path.
 """
@@ -19,24 +23,52 @@ from pathlib import Path
 # Supported video extensions
 VIDEO_EXTENSIONS = {".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv"}
 
+# Arabic letter range — used in all patterns
+AR = r"[\u0600-\u06FF]"
+
 # Regex patterns — ordered from most specific to least specific
 # Each pattern captures: (surah_name, episode_number)
 FILENAME_PATTERNS = [
-    # Pattern 1: تفسير سورة الفاتحة رقم 1
-    r"تفسير\s+سورة\s+([\u0600-\u06FF\s]+?)\s+رقم\s+(\d+)",
+    # 1. تفسير سورة X رقم N
+    rf"تفسير\s+سورة\s+({AR}[\u0600-\u06FF\s]*?)\s+رقم\s+(\d+)",
 
-    # Pattern 2: سورة يونس حلقة رقم 38
-    r"سورة\s+([\u0600-\u06FF\s]+?)\s+حلقة\s+رقم\s+(\d+)",
+    # 2. سورة X حلقة رقم N  (no ال)
+    rf"سورة\s+({AR}[\u0600-\u06FF\s]*?)\s+حلقة\s+رقم\s+(\d+)",
 
-    # Pattern 3: سورة الفاتحة رقم 1  (no حلقة)
-    r"سورة\s+([\u0600-\u06FF\s]+?)\s+رقم\s+(\d+)",
+    # 3. سورة X الحلقة رقم N  (with ال, space before)
+    rf"سورة\s+({AR}[\u0600-\u06FF\s]*?)\s+الحلقة\s+رقم\s+(\d+)",
+
+    # 4. سورة Xالحلقةرقم N   (no space, e.g. التكاثرالحلقة)
+    rf"سورة\s+({AR}[\u0600-\u06FF]+?)الحلقة\s*رقم\s+(\d+)",
+
+    # 5. سورة X الحلقات رقم N  (plural, e.g. الروم الحلقات)
+    rf"سورة\s+({AR}[\u0600-\u06FF\s]*?)\s+الحلقات\s+رقم\s+(\d+)",
+
+    # 6. سورة X رقم N  (no حلقة word at all)
+    rf"سورة\s+({AR}[\u0600-\u06FF\s]*?)\s+رقم\s+(\d+)",
 ]
+
 
 # Special pattern for مقدمة (introduction episodes — no surah name)
 INTRO_PATTERN = r"مقدمة\s+رقم\s+(\d+)"
 
+# Normalize Arabic spelling variants found in filenames
+# Maps filename spelling → surah_order.json spelling
+SPELLING_MAP = {
+    "ابراهيم": "إبراهيم",
+    "الاخلاص": "الإخلاص",
+    "الاعلى":  "الأعلى",
+    "الانشقاق": "الانشقاق",   # same
+    "الانفطار": "الانفطار",   # same
+}
 
-def _extract_info_from_filename(filename: str) -> dict:
+def _normalize(name: str) -> str:
+    """Strip extra whitespace and fix common spelling variants."""
+    name = " ".join(name.split())  # collapse multiple spaces
+    return SPELLING_MAP.get(name, name)
+
+
+def _extract_info_from_filename(filename: str) -> dict | None:
     """
     Try each regex pattern against the filename stem.
     Returns a dict with keys: surah, episode, is_intro.
@@ -57,7 +89,7 @@ def _extract_info_from_filename(filename: str) -> dict:
     for pattern in FILENAME_PATTERNS:
         match = re.search(pattern, stem)
         if match:
-            surah_name = match.group(1).strip()
+            surah_name = _normalize(match.group(1).strip())
             episode_num = int(match.group(2))
             return {
                 "surah": surah_name,
