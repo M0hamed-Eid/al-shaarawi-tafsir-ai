@@ -162,7 +162,7 @@ def main():
 
     # Wrap metadata in a top-level object with a timestamp
     output = {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).isoformat() + "Z",
         "total_videos": len(metadata),
         "videos": metadata,
     }
