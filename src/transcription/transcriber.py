@@ -5,6 +5,24 @@ Wraps faster-whisper with sensible defaults for Arabic Tafsir content.
 Designed to be device-agnostic: works on CPU, scales to CUDA/GPU.
 """
 
+import os
+
+# ── CUDA DLL path fix (Windows) ──────────────────────────────────────────────
+# faster-whisper/ctranslate2 loads cuBLAS + cuDNN *lazily* at inference time,
+# not at model construction. os.add_dll_directory alone isn't enough for those
+# late-loaded DLLs, so we also prepend their folders to PATH, which Windows
+# always searches and which child processes inherit.
+if os.name == "nt":
+    _nvidia = os.path.join(
+        os.path.dirname(__file__), "..", "..",
+        ".venv", "Lib", "site-packages", "nvidia",
+    )
+    for _pkg in ("cublas", "cudnn"):
+        _bin = os.path.abspath(os.path.join(_nvidia, _pkg, "bin"))
+        if os.path.isdir(_bin):
+            os.add_dll_directory(_bin)
+            os.environ["PATH"] = _bin + os.pathsep + os.environ.get("PATH", "")
+
 import logging
 from datetime import datetime, UTC
 from pathlib import Path
@@ -18,8 +36,6 @@ from transcript_schema import (
 )
 
 logger = logging.getLogger("transcriber")
-
-
 # ── Configuration ─────────────────────────────────────────────────────────────
 
 TRANSCRIPTION_CONFIG = {
@@ -28,13 +44,13 @@ TRANSCRIPTION_CONFIG = {
     "model_size": "medium",
 
     # Device: "cpu" or "cuda". Set to "cuda" when moving to GPU machine.
-    "device": "cpu",
+    "device": "cuda",
 
     # Compute type:
     #   CPU:  "int8"           (fast, small memory footprint)
     #   GPU:  "float16"        (fast, accurate)
     #         "int8_float16"   (faster, minor accuracy tradeoff)
-    "compute_type": "int8",
+    "compute_type": "float16",
 
     # Whisper transcription parameters
     "language": "ar",
