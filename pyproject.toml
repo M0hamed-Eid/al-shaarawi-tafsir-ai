@@ -7,4 +7,11 @@ requires-python = ">=3.14"
 dependencies = [
     "faster-whisper>=1.2.1",
     "tqdm>=4.68.1",
+    # --- Phase 4: Quran reference enrichment ---
+    "pyquran>=1.0",      # bundles the Tanzil Uthmani XML (canonical text + tashkeel)
+    "pyarabic>=0.6",     # pyquran dependency (Arabic letter utilities)
+    "rank-bm25>=0.2.2",  # in-RAM BM25 (search feature + 'bm25' retrieval backend)
+    "rapidfuzz>=3.0",    # C++ fuzzy matching (Stage C verification)
+    "pydantic>=2.0",     # output schemas (RawMatch / VerifiedMatch / EnrichedTranscript)
+    "pyyaml>=6.0",       # config loading
 ]

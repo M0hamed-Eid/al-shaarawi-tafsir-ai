@@ -1,0 +1,64 @@
+# =============================================================================
+# Quran Reference Enrichment — configuration
+# Every tunable lives here. Override per-run with `--config <file>`.
+# =============================================================================
+
+paths:
+  # Source Tanzil Uthmani XML. The build script auto-discovers the copy bundled
+  # with the `pyquran` package if this file is missing.
+  quran_xml:        "data/quran/quran-uthmani.xml"
+  quran_db:         "data/quran/quran.sqlite3"
+  quran_jsonl:      "data/quran/quran.jsonl"     # primary corpus used by the pipeline
+  transcripts_dir:  "data/transcripts"
+  output_dir:       "data/enriched"
+  surah_order:      "data/metadata/surah_order.json"
+  log_dir:          "logs"
+
+normalization:
+  remove_diacritics:   true     # harakat, tanwin, shadda, sukun, quranic marks
+  remove_tatweel:      true     # ـ
+  normalize_alef:      true     # أ إ آ ٱ ى-context → ا
+  normalize_hamza:     true     # ؤ→و, ئ→ي, drop standalone ء
+  normalize_ta_marbuta: true   # ة → ه
+  normalize_alef_maqsura: true  # ى → ي
+  strip_non_arabic:    true     # keep only Arabic letters + single spaces
+
+retrieval:
+  window_size:     8       # words per sliding query window
+  window_step:     3       # stride between windows
+  bm25_top_k:      6       # candidate verses kept per window
+  min_verse_tokens: 2      # verses shorter than this are only matched inside multi-verse chains
+  backend:          bigram   # candidate generation: 'bigram' (fast, default) or 'bm25'
+  bigram_df_cap:    50       # ignore bigrams occurring in > this many verses (too common to anchor)
+
+verification:
+  # rapidfuzz partial-alignment threshold (0..100) to keep a raw candidate
+  min_partial_score:   78
+  # margin (in words, relative to verse length) added around an anchor when
+  # searching for the precise span
+  search_margin_tokens: 6
+  # final confidence acceptance threshold (0..1)
+  accept_threshold:    0.82
+  # confidence below this but above a floor is emitted as "review"
+  review_threshold:    0.70
+  # boost added (capped) when the matched surah == episode primary surah
+  primary_surah_boost: 0.03
+  # min matched tokens for a *standalone* (non-chained) verse to be accepted
+  min_standalone_tokens: 3
+  # ambiguity guard: if a *different* verse aligns to the SAME span within this
+  # many fuzz points, the match is ambiguous (a recurring Quranic clause) and is
+  # penalised unless one candidate is the episode's primary surah.
+  ambiguity_delta:    2.0
+  ambiguity_penalty:  0.12
+
+multiverse:
+  max_gap_words:   4       # allowed transcript-word gap between chained verses
+  extend_threshold: 0.72   # lower bar when force-aligning the *next* verse
+  max_chain:       12      # safety cap on consecutive verses in one chain
+
+output:
+  write_enriched_text: true   # add per-segment text with ﴿…﴾ insertions
+  replace_with:        quoted  # inline text: "quoted" (recited fragment) or "full_ayah"
+  keep_review_matches: true   # include sub-threshold matches flagged for review
+  open_marker:  "﴿ "
+  close_marker: " ﴾"

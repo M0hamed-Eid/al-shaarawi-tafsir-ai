@@ -18,6 +18,7 @@ data/raw_videos/
 data/audio/
 data/transcripts/
 data/processed/
+data/enriched
 
 # Models
 models/
